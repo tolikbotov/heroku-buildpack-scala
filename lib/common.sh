@@ -303,13 +303,13 @@ run_sbt() {
   status "Running: sbt $tasks"
   SBT_HOME="$home" sbt ${tasks} | output $buildLogFile
 
-  if [ "${PIPESTATUS[*]}" != "0 0" ]; then
-    handle_sbt_errors $buildLogFile
+  
+  handle_sbt_errors $buildLogFile
 
-    echo "Outputting global logging files:"
-    cat /tmp/scala_buildpack_build_dir/target/global-logging/*
-    echo "Output of global logging files done!"
-  fi
+  echo "Outputting global logging files:"
+  cat /tmp/scala_buildpack_build_dir/target/global-logging/*
+  echo "Output of global logging files done!"
+  
 }
 
 cache_copy() {
