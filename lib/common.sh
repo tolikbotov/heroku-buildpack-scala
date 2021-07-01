@@ -305,6 +305,10 @@ run_sbt() {
 
   if [ "${PIPESTATUS[*]}" != "0 0" ]; then
     handle_sbt_errors $buildLogFile
+
+    echo "Outputting global logging files:"
+    cat /tmp/scala_buildpack_build_dir/target/global-logging/*
+    echo "Output of global logging files done!"
   fi
 }
 
